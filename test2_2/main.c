@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
-
+#include "comparators.h"
 #define COUNT 5
 #define MIN   -20
 #define MAX   20
