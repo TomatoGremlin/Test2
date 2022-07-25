@@ -1,24 +1,46 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 #define COUNT 5
-#define MIN   1
+#define MIN   -20
 #define MAX   20
-
-double compUp(const double * a, const double * b)
+#define EPS 0.0001
+int compUp(const void * a, const void * b)
 {
- return *a - *b;
+  double n1 = *(double*)a;
+    double n2 = *(double*)b;
+    if (fabs(n1 - n2) < EPS){
+        return 0;
+    } else if (n1 > n2){
+        return 1;
+    }
+    return -1;
 }
 
-double compDown(const double * a, const double* b)
+int compDown(const void * a, const void* b)
 {
- return *b - *a;
+ double n1 = *(double*)a;
+    double n2 = *(double*)b;
+    if (fabs(n1 - n2) < EPS){
+        return 0;
+    } else if (n1 > n2){
+        return -1;
+    }
+    return 1;
 }
 
-double compAbs(const double * a, const double * b)
+int compAbs(const void * a, const void * b)
 {
- return abs(*a )- abs(*b);
+ double n1 = *(double*)a;
+    double n2 = *(double*)b;
+    if (fabs(n1 - n2) < EPS){
+        return 0;
+    } else if (fabs(n1) > fabs(n2)){
+        return 1;
+    }
+    return -1;
 }
 
 void printArr(double arr[], int n)
@@ -33,17 +55,15 @@ int main()
     srand (time ( NULL));
     
     double arr[COUNT];
-    double range;
-    double divi ;
 
     for (size_t i = 0; i < COUNT; i++) // generate random numbers
     {
-        range = (MAX - MIN); 
-        divi = RAND_MAX / range;
-        arr[i] = MIN + (rand() / divi);
+        double range = (MAX - MIN); 
+        double div = RAND_MAX / range;
+        arr[i] = MIN + (rand() / div);
     }
 
-    double(*fp[4])(const double *, const double *);  // array of the compare functions
+    int(*fp[4])(const void *, const void *);  // array of the compare functions
     fp[0] =compUp;
     fp[1] =compDown;
     fp[2] =compAbs;
