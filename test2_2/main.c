@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "comparators.h"
+#include <math.h>
+
 #define COUNT 5
-#define MIN   1
+#define MIN   -20
 #define MAX   20
+#define EPS 0.0001
 
 /*
 (.h files don't compile like .c files )
@@ -54,7 +56,7 @@ gcc main.c -o program -L . -l comparatorslib
 
 int main()
 {
-    srand (time ( NULL));
+  srand (time ( NULL));
     
     double arr[COUNT];
 
@@ -65,7 +67,7 @@ int main()
         arr[i] = MIN + (rand() / div);
     }
 
-    double(*fp[4])(const double *, const double *);  // array of the compare functions
+    int(*fp[4])(const void *, const void *);  // array of the compare functions
     fp[0] =compUp;
     fp[1] =compDown;
     fp[2] =compAbs;
@@ -79,6 +81,7 @@ int main()
         fprintf(stderr, "Error. The number is not correct");
         return 0;
     }
+    
 
     qsort((void*)arr, COUNT, sizeof(arr[0]), fp[number]);
   
