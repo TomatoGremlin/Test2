@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 
-double compUp(const double * , const double * );
-double compDown(const double * , const double* );
-double compAbs(const double * , const double * );
+int compUp(const void * a, const void * b);
+int compDown(const void * a, const void* b);
+int compAbs(const void * a, const void * b);
 void printArr(double*, int );
 
