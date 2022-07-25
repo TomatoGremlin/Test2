@@ -48,8 +48,8 @@ gcc main.c -o program -L . -l comparatorslib
 
 Dynamic library:
 gcc -c -fPIC comparators.c -o dcomparators.o
-gcc -shared -o libdcomparatorslib.so dcomparators.o
-gcc main.c -o program -L . -l dcomparatorslib
+gcc -shared -o libcomparatorslib.so dcomparators.o
+gcc main.c -o program -L . -l comparatorslib
 */
 
 int main()
