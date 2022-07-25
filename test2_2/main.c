@@ -37,6 +37,7 @@ gcc -c comparators.s -o comparators.o
 4.Linking
 - includes static libraries
 -turns into an executable machine code
+-combining the  files into an exe
 gcc main.o comparators.o -o program
 
 -------
@@ -47,8 +48,8 @@ gcc main.c -o program -L . -l comparatorslib
 
 Dynamic library:
 gcc -c -fPIC comparators.c -o dcomparators.o
-gcc -shared -o libcomparatorslib.so
-gcc main.c -o program -L. -l dcomparatorslib
+gcc -shared -o libdcomparatorslib.so dcomparators.o
+gcc main.c -o program -L . -l dcomparatorslib
 */
 
 int main()
