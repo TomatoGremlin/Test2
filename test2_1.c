@@ -51,7 +51,7 @@ int main()
 
     int number;
     // input check
-    scanf("%d", number); // get index to choose a compare function
+    scanf("%d", &number); // get index to choose a compare function
     if (number < 0 || number > 3)
     {
         fprintf(stderr, "Error. The number is not correct");
