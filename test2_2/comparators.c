@@ -1,17 +1,38 @@
 #include "comparators.h"
-double compUp(const double * a, const double * b)
+int compUp(const void * a, const void * b)
 {
- return *a - *b;
+  double n1 = *(double*)a;
+    double n2 = *(double*)b;
+    if (fabs(n1 - n2) < EPS){
+        return 0;
+    } else if (n1 > n2){
+        return 1;
+    }
+    return -1;
 }
 
-double compDown(const double * a, const double* b)
+int compDown(const void * a, const void* b)
 {
- return *b - *a;
+ double n1 = *(double*)a;
+    double n2 = *(double*)b;
+    if (fabs(n1 - n2) < EPS){
+        return 0;
+    } else if (n1 > n2){
+        return -1;
+    }
+    return 1;
 }
 
-double compAbs(const double * a, const double * b)
+int compAbs(const void * a, const void * b)
 {
- return abs(*a )- abs(*b);
+ double n1 = *(double*)a;
+    double n2 = *(double*)b;
+    if (fabs(n1 - n2) < EPS){
+        return 0;
+    } else if (fabs(n1) > fabs(n2)){
+        return 1;
+    }
+    return -1;
 }
 
 void printArr(double arr[], int n)
